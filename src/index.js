@@ -8,6 +8,7 @@ const classForSnabbdom = require('snabbdom/modules/class').default
 const styleForSnabbdom = require('snabbdom/modules/style').default
 const eventsForSnabbdom = require('snabbdom/modules/eventlisteners').default
 const h = require('snabbdom/h').default
+const createClient = require('fasp-client')
 
 const render = require('./ui')
 
@@ -19,14 +20,66 @@ const patch = snabbdom.init([
 	eventsForSnabbdom,
 ])
 
+// state
+
 const state = {
+	// todo: fetch data
+	receiverUrl: null,
+	receiver: null,
+
+	props: {
+		filename: null,
+		path: null,
+		duration: null,
+		progress: null,
+		pause: null,
+		volume: null,
+		metadata: {},
+		artwork: null
+	}
+}
+
+// actions
+
+const onProp = (prop, val) => {
+	if (prop === 'time-pos') prop = 'progress'
+	state.props[prop] = val
+	rerender()
+}
+
+const connectTo = (url) => {
+	// todo: parse & normalize url
+	if (url === state.receiverUrl) return null
+	if (state.receiver) state.receiver.close()
+	state.receiverUrl = url
+	state.receiver = createClient(url, onProp)
+	rerender()
+}
+
+const resumePause = () => {
+	if (!state.receiver) return null
+	if (!state.props.pause) state.receiver.pause()
+	else state.receiver.resume()
+	state.props.pause = !state.props.pause
+	rerender()
 }
 
 const actions = {
+	connectTo, resumePause
 }
+const createReceiverAction = (action) => function () {
+	if (!state.receiver) return null
+	return state.receiver[action].apply(state.receiver, arguments)
+}
+for (let action of [
+	'play', 'queue', 'next', 'previous', 'remove', 'stop',
+	'seek', 'setVolume'
+]) actions[action] = createReceiverAction(action)
+
+// render
 
 let tree = document.querySelector('#app')
-const rerender = () => {
+const rerender = () => { // todo: debounce?
 	const newTree = render(state, actions)
 	patch(tree, newTree)
 	tree = newTree
