@@ -1,0 +1,29 @@
+#player {
+	max-width: 20rem;
+	margin: 0 auto;
+}
+
+#artwork {
+	max-width: 100%;
+	margin: .5rem 0;
+}
+
+#name, #album, #artist {
+	display: block;
+}
+
+#previous, #next, #resume-pause {
+	vertical-align: middle;
+	font-family: monospace;
+}
+#previous, #next {
+	font-size: 200%;
+}
+#resume-pause {
+	font-size: 250%;
+}
+
+#progress, #volume {
+	width: 100%;
+	display: block;
+}

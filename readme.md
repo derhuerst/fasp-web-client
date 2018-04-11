@@ -2,7 +2,6 @@
 
 **A web app to control [Friendly Audio Streaming Protocol](https://github.com/derhuerst/friendly-audio-streaming-protocol) receivers.**
 
-[![npm version](https://img.shields.io/npm/v/fasp-web-client.svg)](https://www.npmjs.com/package/fasp-web-client)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/fasp-web-client.svg)
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
