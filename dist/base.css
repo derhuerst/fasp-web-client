@@ -1,0 +1,35 @@
+body {
+	margin: 0 auto;
+	padding: 1rem;
+	text-align: center;
+	font-size: 110%;
+	font-family: system-ui, system, sans-serif;
+	font-weight: 400;
+	line-height: 1.4;
+	color: #222;
+	background-color: #fff;
+}
+
+button {
+	display: inline-block;
+	margin: .2rem;
+	padding: .2em .3em;
+	line-height: 1;
+	font-size: inherit;
+	color: inherit;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+}
+button:hover {
+	opacity: .7;
+}
+button:disabled:hover {
+	opacity: 1;
+	cursor: not-allowed;
+}
+button:focus {
+	outline: 1px solid #b0291b;
+}

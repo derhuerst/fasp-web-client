@@ -8,5 +8,4 @@ pnpm-debug.log
 
 shrinkwrap.yaml
 
-/dist/*
-!/dist/index.html
+dist/bundle.js
