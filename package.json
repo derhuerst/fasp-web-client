@@ -1,0 +1,41 @@
+{
+	"private": true,
+	"name": "fasp-web-client",
+	"description": "A web app to control Friendly Audio Streaming Protocol receivers.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"keywords": [
+		"audio",
+		"streaming",
+		"friendly audio streaming protocol",
+		"fasp"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/fasp-web-client",
+	"repository": "derhuerst/fasp-web-client",
+	"bugs": "https://github.com/derhuerst/fasp-web-client/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+		"babel-polyfill": "^6.26.0",
+		"global": "^4.3.2",
+		"snabbdom": "^0.7.1"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babelify": "^8.0.0",
+		"browserify": "^16.2.0",
+		"envify": "^4.1.0",
+		"uglify-es": "^3.3.9",
+		"uglifyify": "^4.0.5",
+		"wzrd": "^1.5.0"
+	},
+	"scripts": {
+		"build": "env NODE_ENV=production browserify src/index.js -g [babelify --presets env] -g envify -g uglifyify >dist/bundle.js",
+		"build:dev": "env NODE_ENV=dev browserify src/index.js >dist/bundle.js",
+		"start": "cd dist; wzrd ../src/index.js:bundle.js"
+	}
+}
