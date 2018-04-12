@@ -23,10 +23,10 @@ button {
 	-webkit-appearance: none;
 	appearance: none;
 }
-button:hover {
+button:hover, button:active {
 	opacity: .7;
 }
-button:disabled:hover {
+button:disabled:hover, button:active:hover {
 	opacity: 1;
 	cursor: not-allowed;
 }
