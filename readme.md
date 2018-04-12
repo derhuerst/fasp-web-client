@@ -2,9 +2,21 @@
 
 **A web app to control [Friendly Audio Streaming Protocol](https://github.com/derhuerst/friendly-audio-streaming-protocol) receivers.**
 
+[![npm version](https://img.shields.io/npm/v/fasp-web-client.svg)](https://www.npmjs.com/package/fasp-web-client)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/fasp-web-client.svg)
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
+
+The [npm package](https://www.npmjs.com/package/fasp-web-client) contains a `dist` directory, which contains all necessary files for the web client. If you use [Express](https://expressjs.com/), you can serve them like this:
+
+```js
+const {dirname} = require('path')
+const serve = require('serve-static')
+
+const clientDir = dirname(require.resolve('fasp-web-client/dist/bundle.js'))
+
+app.use(serve(clientDir))
+```
 
 
 ## Contributing

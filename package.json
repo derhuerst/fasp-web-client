@@ -1,9 +1,11 @@
 {
-	"private": true,
 	"name": "fasp-web-client",
 	"description": "A web app to control Friendly Audio Streaming Protocol receivers.",
-	"version": "0.1.0",
-	"main": "index.js",
+	"version": "1.0.0",
+	"files": [
+		"src",
+		"dist"
+	],
 	"keywords": [
 		"audio",
 		"streaming",
@@ -35,8 +37,9 @@
 		"wzrd": "^1.5.0"
 	},
 	"scripts": {
-		"build": "env NODE_ENV=production browserify src/index.js -g [babelify --presets env] -g envify -g uglifyify >dist/bundle.js",
+		"build": "env NODE_ENV=production browserify src/index.js -g [babelify --presets env] -g envify -g uglifyify | uglifyjs -mc >dist/bundle.js",
 		"build:dev": "env NODE_ENV=dev browserify src/index.js >dist/bundle.js",
-		"start": "cd dist; wzrd ../src/index.js:bundle.js"
+		"start": "cd dist; wzrd ../src/index.js:bundle.js",
+		"prepublishOnly": "npm run build"
 	}
 }
