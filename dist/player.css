@@ -6,6 +6,25 @@
 	display: block;
 }
 
+#player button {
+	color: inherit;
+	border: none;
+	background-color: transparent;
+}
+#player button:hover, #player button:active {
+	opacity: .7;
+}
+#player button:disabled:hover, #player button:active:hover {
+	opacity: 1;
+	cursor: not-allowed;
+}
+#player button:focus {
+	outline: 2px solid #000;
+}
+#player button:focus:active {
+	outline: none;
+}
+
 #artwork {
 	width: 100%;
 	margin: .5rem 0;
@@ -23,15 +42,13 @@
 	font-size: 90%;
 }
 
-#previous, #next, #resume-pause {
+#player .control {
+	font-size: 180%;
 	vertical-align: middle;
 	font-family: monospace;
 }
-#previous, #next {
-	font-size: 200%;
-}
-#resume-pause {
-	font-size: 250%;
+#player #resume-pause {
+	font-size: 300%;
 }
 
 #progress, #volume {

@@ -51,7 +51,15 @@ const renderPlayer = (state, actions) => {
 		}, [
 			m.artist || ''
 		]),
-		h('button#previous', {
+		h('button#stop.control', {
+			props: {
+				disabled: !p.filename
+			},
+			on: {
+				click: actions.stop
+			}
+		}, ['⏹']),
+		h('button#previous.control', {
 			props: {
 				disabled: !p.filename
 			},
@@ -59,7 +67,7 @@ const renderPlayer = (state, actions) => {
 				click: actions.previous
 			}
 		}, ['⏮']),
-		h('button#resume-pause', {
+		h('button#resume-pause.control', {
 			props: {
 				disabled: !p.filename
 			},
@@ -69,7 +77,7 @@ const renderPlayer = (state, actions) => {
 		}, [
 			p.pause || !p.filename ? '▶' : '⏸'
 		]),
-		h('button#next', {
+		h('button#next.control', {
 			props: {
 				disabled: !p.filename
 			},
@@ -77,6 +85,14 @@ const renderPlayer = (state, actions) => {
 				click: actions.next
 			}
 		}, ['⏭']),
+		h('button#add.control', {
+			props: {
+				disabled: !state.receiver
+			},
+			on: {
+				click: actions.openAddDialog
+			}
+		}, ['➕']),
 		h('label', {
 			attrs: {
 				for: 'progress'
@@ -122,9 +138,47 @@ const renderPlayer = (state, actions) => {
 	])
 }
 
+const renderAddDialog = (state, actions) => {
+	if (!state.addDialogOpen) return ''
+	const add = (action) => (ev) => {
+		const textarea = ev.target.parentNode.querySelector('textarea')
+		const val = textarea.value.trim()
+		if (val) {
+			action(val)
+			actions.closeAddDialog()
+		}
+	}
+
+	return h('div#add-dialog', {}, [
+		h('div', {}, [
+			h('textarea', {
+				attrs: {
+					autofocus: true
+				}
+			}, []),
+			h('button', {
+				on: {
+					click: actions.closeAddDialog
+				}
+			}, ['cancel']),
+			h('button', {
+				on: {
+					click: add(actions.play)
+				}
+			}, ['play right now']),
+			h('button', {
+				on: {
+					click: add(actions.queue)
+				}
+			}, ['queue'])
+		])
+	])
+}
+
 const render = (state, actions) => {
 	return h('div#app', {}, [
-		renderPlayer(state, actions)
+		renderPlayer(state, actions),
+		renderAddDialog(state, actions)
 		// todo: render queue
 	])
 }

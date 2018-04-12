@@ -10,26 +10,33 @@ body {
 	background-color: #fff;
 }
 
+textarea {
+	font-size: inherit;
+	border: 2px solid #000;
+	-webkit-appearance: none;
+	appearance: none;
+}
+textarea:focus {
+	border-color: #2980b9;
+	outline: none;
+}
+
 button {
 	display: inline-block;
 	margin: .2rem;
 	padding: .2em .3em;
 	line-height: 1;
 	font-size: inherit;
-	color: inherit;
-	border: none;
-	background-color: transparent;
 	cursor: pointer;
+	color: white;
+	background-color: #2980b9;
+	border: none;
 	-webkit-appearance: none;
 	appearance: none;
 }
-button:hover, button:active {
-	opacity: .7;
-}
-button:disabled:hover, button:active:hover {
-	opacity: 1;
-	cursor: not-allowed;
+button:active {
+	background-color: #296099;
 }
 button:focus {
-	outline: 1px solid #b0291b;
+	outline: 2px solid #000;
 }

@@ -27,6 +27,7 @@ const state = {
 	receiverUrl: null,
 	receiver: null,
 
+	addDialogOpen: false,
 	props: {
 		filename: null,
 		path: null,
@@ -64,8 +65,20 @@ const resumePause = () => {
 	rerender()
 }
 
+const openAddDialog = () => {
+	if (!state.receiver || state.addDialogOpen) return null
+	state.addDialogOpen = true
+	rerender()
+}
+const closeAddDialog = () => {
+	if (!state.addDialogOpen) return null
+	state.addDialogOpen = false
+	rerender()
+}
+
 const actions = {
-	connectTo, resumePause
+	connectTo, resumePause,
+	openAddDialog, closeAddDialog
 }
 const createReceiverAction = (action) => function () {
 	if (!state.receiver) return null
