@@ -175,11 +175,23 @@ const renderAddDialog = (state, actions) => {
 	])
 }
 
+const renderQueue = (state, actions) => {
+	const queue = state.props.queue
+	if (!Array.isArray(queue)) return ''
+
+	const items = []
+	for (let filename of queue) {
+		items.push(h('li', {}, [filename]))
+	}
+
+	return h('ol#queue', {}, items)
+}
+
 const render = (state, actions) => {
 	return h('div#app', {}, [
 		renderPlayer(state, actions),
-		renderAddDialog(state, actions)
-		// todo: render queue
+		renderAddDialog(state, actions),
+		renderQueue(state, actions)
 	])
 }
 

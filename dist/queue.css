@@ -1,0 +1,7 @@
+#queue {
+	max-width: 20rem;
+	margin: 1rem auto;
+	padding-left: 0;
+	text-align: left;
+	list-style: none;
+}
