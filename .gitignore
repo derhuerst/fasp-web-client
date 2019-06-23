@@ -6,6 +6,6 @@ node_modules
 npm-debug.log
 pnpm-debug.log
 
-shrinkwrap.yaml
+/package-lock.json
 
 dist/bundle.js
