@@ -1,7 +1,7 @@
 {
 	"name": "fasp-web-client",
 	"description": "A web app to control Friendly Audio Streaming Protocol receivers.",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"files": [
 		"src",
 		"dist"
