@@ -7,15 +7,21 @@
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
 
-The [npm package](https://www.npmjs.com/package/fasp-web-client) contains a `dist` directory, which contains all necessary files for the web client. If you use [Express](https://expressjs.com/), you can serve them like this:
+The [npm package](https://www.npmjs.com/package/fasp-web-client) contains a `dist` directory, which contains all necessary files for the web client.
+
+Using [Express](https://expressjs.com/), you can serve them like this:
 
 ```js
-const {dirname} = require('path')
 const serve = require('serve-static')
+const webClientDir = require('fasp-web-client')
 
-const clientDir = dirname(require.resolve('fasp-web-client/dist/bundle.js'))
+app.use(serve(webClientDir))
+```
 
-app.use(serve(clientDir))
+Using any CLI web server (like [`serve`](https://npmjs.com/package/serve)), you can serve them like this:
+
+```bash
+serve $(node -p 'require("fasp-web-client")')
 ```
 
 
