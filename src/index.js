@@ -99,3 +99,10 @@ const rerender = () => { // todo: debounce?
 }
 
 setTimeout(rerender, 0)
+
+setTimeout(() => {
+	const url = new URL(location.href)
+	url.protocol = 'ws'
+	connectTo(url.href)
+}, 30)
+
